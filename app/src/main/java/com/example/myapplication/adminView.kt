@@ -40,6 +40,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.Locale
 
 class adminView : AppCompatActivity() {
+
     private lateinit var teacherRecycleView : RecyclerView
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar

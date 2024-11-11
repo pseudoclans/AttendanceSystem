@@ -299,7 +299,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navbar"
-        android:layout_width="0dp"
+        android:layout_width="359dp"
         android:layout_height="116dp"
         android:background="@color/blue"
         app:layout_constraintHeight_percent=".1"
@@ -393,8 +393,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     <include
         layout="@layout/create_student_account"
         android:elevation="4dp"
@@ -402,7 +400,6 @@
         app:layout_constraintWidth_percent="1"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="16dp" />
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -878,6 +875,8 @@
         app:layout_constraintTop_toBottomOf="@+id/navbar">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/admin_create_teacher_account" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
