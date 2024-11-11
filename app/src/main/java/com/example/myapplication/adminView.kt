@@ -79,6 +79,9 @@ class adminView : AppCompatActivity() {
     private lateinit var navBar : View
     private lateinit var footer : ViewGroup
 
+    private var currentSelectedLayout: View? = null
+
+
     private lateinit var stud_enrolledLayout : View
     private lateinit var av_seachProf : EditText
     // Introduce a cache for students
@@ -98,15 +101,31 @@ class adminView : AppCompatActivity() {
     private lateinit var  stud_transCount: TextView
     private lateinit var stud_totalCount: TextView
     private lateinit var hl_profCount: TextView
+
+    private lateinit var ct_layout : View
+    private lateinit var ct_close_layout : ImageView
+
+    // create proff button ini
+    private lateinit var  ad_create_btn_prof : Button
+
+    private lateinit var create_prof_btn : Button
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.adminview)
+
+        ct_close_layout = findViewById(R.id.ct_close_layout)
+        ad_create_btn_prof = findViewById(R.id.ad_create_btn_prof)
+
+
         // view
         navBar = findViewById(R.id.navbar)
         footer = findViewById(R.id.footer)
 
+        ct_layout = findViewById(R.id.ct_layout)
 
+       //button
+        create_prof_btn = findViewById(R.id.create_prof_btn)
         //icon
         adminIcon = findViewById(R.id.adminIcon)
         studentIcon = findViewById(R.id.studentIcon)
@@ -238,7 +257,7 @@ class adminView : AppCompatActivity() {
         spinner()
         spinner2()
         insertStudentData()
-
+        insertProfessor()
 
 
 
@@ -323,22 +342,27 @@ class adminView : AppCompatActivity() {
             }
         }
 
-        // Prepare the selected layout for animation
-        selectedLayout.visibility = View.VISIBLE
-        selectedLayout.alpha = 0f // Start from invisible
-        selectedLayout.translationY = selectedLayout.height.toFloat() // Start below the visible area
+        // Handle the selected layout only if it's different from the current one
+        if (currentSelectedLayout != selectedLayout) {
+            selectedLayout.visibility = View.VISIBLE
+            selectedLayout.alpha = 0f // Start from invisible
+            selectedLayout.translationY = selectedLayout.height.toFloat() // Start below the visible area
 
-        // Slide in the selected layout and fade it in
-        selectedLayout.animate()
-            .translationY(0f) // Move to original position
-            .alpha(1f) // Fade in to full visibility
-            .setDuration(300) // Animation duration in milliseconds
-            .start()
+            // Slide in the selected layout and fade it in
+            selectedLayout.animate()
+                .translationY(0f) // Move to original position
+                .alpha(1f) // Fade in to full visibility
+                .setDuration(300) // Animation duration in milliseconds
+                .start()
 
-        // Change the icon and text color of the selected layout
-        layoutsAndElements[selectedLayout]?.let { (icon, text) ->
-            icon.setColorFilter(selectedColor, PorterDuff.Mode.SRC_IN) // Set selected icon color
-            text.setTextColor(selectedColor) // Set selected text color
+            // Change the icon and text color of the selected layout
+            layoutsAndElements[selectedLayout]?.let { (icon, text) ->
+                icon.setColorFilter(selectedColor, PorterDuff.Mode.SRC_IN) // Set selected icon color
+                text.setTextColor(selectedColor) // Set selected text color
+            }
+
+            // Update the current selected layout
+            currentSelectedLayout = selectedLayout
         }
     }
 
@@ -492,6 +516,72 @@ class adminView : AppCompatActivity() {
 
     }
 
+    private fun insertProfessor(){
+        create_prof_btn.setOnClickListener{
+
+            val firstName = findViewById<EditText>(R.id.ct_firstname).text.toString().trim()
+            val lastName = findViewById<EditText>(R.id.ct_lastname).text.toString().trim()
+            val middleName = findViewById<EditText>(R.id.ct_middlename).text.toString().trim()
+            val email = findViewById<EditText>(R.id.ct_email).text.toString().trim()
+
+            val gUsername = generateUsername(firstName, lastName)
+            val gPassword = generateRandomPassword(3)
+            Log.d("EmailContent", "Usernames: $gUsername, Passwords: $gPassword")
+
+            // Continue with data preparation and API call
+            val ProfessorDetails = mapOf(
+                "username" to gUsername,
+                "password" to gPassword,
+                "role" to "Professor", // Replace with actual role if different
+                "student_id" to generateStudentId(),
+                "first_name" to firstName,
+                "last_name" to lastName,
+                "middle_name" to middleName,
+                "email" to email,
+            )
+                ApiClient.insertProfessor(ProfessorDetails) { response ->
+                    Handler(Looper.getMainLooper()).post {
+                        if (response != null) {
+                            Log.d("InsertProfessor", "Insert successful: ${response.message}")
+                            Toast.makeText(this, "Proffessor inserted successfully", Toast.LENGTH_SHORT).show()
+                            ApiClient.sendEmail(gUsername, email, gPassword, "Professor") { response ->
+                                Handler(Looper.getMainLooper()).post {
+                                    Log.d("EmailContent", "Sending to: $email, Username: $gUsername, Password: $gPassword")
+
+                                    // Check if the response is not null and contains the expected data
+                                    if (response != null && response.status == "success") {
+                                        Log.d("EmailStatus", "Email sent successfully: ${response.message}")
+                                    } else {
+                                        Log.d("EmailStatus", "Failed to send email.")
+                                    }
+                                }
+                            }
+                            // Clear the text fields and reset the spinners
+                            findViewById<EditText>(R.id.ct_firstname).text.clear()
+                            findViewById<EditText>(R.id.ct_lastname).text.clear()
+                            findViewById<EditText>(R.id.ct_middlename).text.clear()
+                            findViewById<EditText>(R.id.ct_email).text.clear()
+
+                            fetchProf()
+
+
+                                toggleVisibility(ct_layout, null, null)
+                                setNavBarClickability(true)
+
+                                showLayout(teacherLayout)
+
+
+                        } else {
+                            Log.d("InsertStudent", "Insert failed")
+                            Toast.makeText(this, "Failed to insert student", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+
+
+        }
+    }
 
 
 
@@ -600,6 +690,8 @@ class adminView : AppCompatActivity() {
         next_cs_button.visibility = View.VISIBLE
         cs_layout.visibility = View.GONE// Make next button visible if needed
         setNavBarClickability(true)
+        setFooterIconsClickability(true, studentLayout)
+        showLayout(studentLayout)
         studentAdapter.setClickable(true)
     }
 
@@ -617,6 +709,20 @@ class adminView : AppCompatActivity() {
             // Hide cs_info_second and make cs_info_first visible
             closebtnInfo()
         }
+
+
+        ad_create_btn_prof.setOnClickListener{
+
+            toggleVisibility(ct_layout, null, null)
+            setNavBarClickability(false)
+
+        }
+
+        ct_close_layout.setOnClickListener{
+            toggleVisibility(ct_layout, null, null)
+            setNavBarClickability(true)
+            showLayout(teacherLayout)
+        }
     }
     private fun setNavBarClickability(isClickable: Boolean) {
         navBar.isClickable = isClickable
@@ -628,35 +734,42 @@ class adminView : AppCompatActivity() {
         av_search_student.isClickable = isClickable
         av_search_student.isEnabled = isClickable
 
-        // Footer icons clickability
-        setFooterIconsClickability(isClickable)
+        // Footer icons clickability with the current selected layout
+        setFooterIconsClickability(isClickable, currentSelectedLayout)
     }
 
-    private fun setFooterIconsClickability(isClickable: Boolean) {
-        // Disable or enable each footer icon individually
-        setIconClickability(adminIcon, isClickable, adminLayout)
-        setIconClickability(studentIcon, isClickable, studentLayout)
-        setIconClickability(homeIcon, isClickable, homeScrollView)
-        setIconClickability(teacherIcon, isClickable, teacherLayout)
+
+    private fun setFooterIconsClickability(isClickable: Boolean, selectedLayout: View?) {
+        // Loop through each icon and apply the appropriate clickability and color
+        setIconClickability(adminIcon, isClickable, adminLayout, selectedLayout == adminLayout)
+        setIconClickability(studentIcon, isClickable, studentLayout, selectedLayout == studentLayout)
+        setIconClickability(homeIcon, isClickable, homeScrollView, selectedLayout == homeScrollView)
+        setIconClickability(teacherIcon, isClickable, teacherLayout, selectedLayout == teacherLayout)
     }
 
-    private fun setIconClickability(icon: ImageView, isClickable: Boolean, layoutToShow: View) {
+
+    private fun setIconClickability(
+        icon: ImageView,
+        isClickable: Boolean,
+        layoutToShow: View,
+        isSelected: Boolean
+    ) {
         icon.isClickable = isClickable
         icon.isEnabled = isClickable
 
-        // Update appearance or color based on the clickability
-        val color = if (isClickable) {
-            ContextCompat.getColor(this, R.color.white) // Color for clickable state
-        } else {
-            ContextCompat.getColor(this, R.color.white_text) // Color for non-clickable state
+        // Maintain selected icon color if this is the currently selected layout
+        val color = when {
+            isSelected -> ContextCompat.getColor(this, R.color.white) // Selected icon color
+            isClickable -> ContextCompat.getColor(this, R.color.white) // Default clickable color
+            else -> ContextCompat.getColor(this, R.color.white_text) // Non-clickable state
         }
         icon.setColorFilter(color, PorterDuff.Mode.SRC_IN)
 
-        // Set or remove click listener based on isClickable
+        // Manage click listeners only if clickable
         if (isClickable) {
             icon.setOnClickListener { showLayout(layoutToShow) }
         } else {
-            icon.setOnClickListener(null) // Disable the click listener
+            icon.setOnClickListener(null) // Disable listener
         }
     }
 

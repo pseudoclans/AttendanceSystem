@@ -136,6 +136,48 @@ object ApiClient {
         })
     }
 
+    fun insertProfessor(
+        professorDetails: Map<String, Any?>, // Using a Map for dynamic fields
+        callback: (InsertProfessorResponse?) -> Unit
+    ) {
+        // Convert professor details map to JSON
+        val requestBody = gson.toJson(professorDetails)
+            .toRequestBody("application/json; charset=utf-8".toMediaType())
+
+        val request = Request.Builder()
+            .url("$BASE_URL/insertprof.php") // Ensure this is the correct URL
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("ApiClient", "Network error: ${e.message}")
+                callback(null)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    if (!response.isSuccessful) {
+                        Log.d("ApiClient", "Response failed: ${response.message}")
+                        callback(null)
+                        return
+                    }
+
+                    val responseBody = response.body?.string()
+                    Log.d("ApiClient", "Response body: $responseBody")
+                    val insertResponse = try {
+                        gson.fromJson(responseBody, InsertProfessorResponse::class.java)
+                    } catch (e: JsonSyntaxException) {
+                        Log.e("ApiClient", "Failed to parse response: ${e.message}")
+                        null
+                    }
+                    callback(insertResponse)
+                }
+            }
+        })
+    }
+
+
     fun getAttendance(studentId: String?, callback: (List<AdminViewStudentAttendanceData>?) -> Unit) {
         val url = "$BASE_URL/getAttendance.php?student_id=$studentId"
 

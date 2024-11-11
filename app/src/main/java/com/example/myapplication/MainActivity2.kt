@@ -108,7 +108,7 @@ class MainActivity2 : AppCompatActivity() {
                                         val fetchedStudent = fetchedStudents[0] // Get the first student in the list
                                         val intent = Intent(this, studentView::class.java)
 
-                                        // Pass the details of the fetched student and the user_id
+                          // Pass the details of the fetched student and the user_id
                                         intent.putExtra("student_id", fetchedStudent.student_id)
                                         intent.putExtra("first_name", fetchedStudent.first_name)
                                         intent.putExtra("last_name", fetchedStudent.last_name)

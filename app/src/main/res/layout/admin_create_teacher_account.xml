@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ct_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/semitransparent_rounded_background"
+    android:visibility="gone">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rounder_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="1">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Create Professor Account"
+            android:textColor="@color/blue"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cs_info_first"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="59dp"
+            android:visibility="visible"
+            app:layout_constraintHeight_percent=".8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_cons6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="1">
+
+                <EditText
+
+                    android:id="@+id/ct_firstname"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/textbox_box"
+
+                    android:ems="10"
+                    android:hint="Input Firstname"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent=".55"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent=".95" />
+
+                <TextView
+                    android:id="@+id/proffessorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Firstname"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ct_firstname"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_cons5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cs_cons6"
+                app:layout_constraintWidth_percent="1">
+
+                <TextView
+                    android:id="@+id/cs_middlename_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:text="Middlename"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ct_middlename"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+
+                    android:id="@+id/ct_middlename"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/textbox_box"
+
+                    android:ems="10"
+                    android:hint="Input Middlename"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent=".55"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent=".95" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_cons4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cs_cons5"
+                app:layout_constraintWidth_percent="1">
+
+                <EditText
+
+                    android:id="@+id/ct_lastname"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/textbox_box"
+
+
+                    android:ems="10"
+                    android:hint="Input Lastname"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent=".55"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent=".95" />
+
+                <TextView
+                    android:id="@+id/cs_lastname_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:text="Lastname"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ct_lastname"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_cons"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cs_cons4"
+                app:layout_constraintWidth_percent="1">
+
+                <EditText
+                    android:id="@+id/ct_email"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/textbox_box"
+                    android:ems="10"
+                    android:hint="Input Email"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent=".55"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent=".95" />
+
+                <TextView
+
+                    android:id="@+id/cs_emailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:text="Email"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ct_email"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/create_prof_btn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="178dp"
+                android:layout_marginTop="43dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/blueButton"
+                android:text="Create"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".11"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cs_cons"
+                app:layout_constraintWidth_percent=".4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/ct_close_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".04"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".15"
+            app:srcCompat="@drawable/close" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

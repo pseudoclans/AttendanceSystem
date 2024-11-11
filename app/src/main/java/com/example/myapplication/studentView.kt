@@ -61,6 +61,13 @@ class studentView : AppCompatActivity() {
 
         attendancedetailInfo = findViewById(R.id.detailsA)
 
+        adminViewStudentAdapter = AdminViewStudentAttendanceAdapter(
+            data = listOf(), // Empty data initially, will be updated later
+            onItemClick = { attendanceData ->
+                displayAttendanceDetails(attendanceData) // Handle the item click
+            }
+        )
+
 
         student_user_layout = findViewById(R.id.student_user_layout)
         showstudentinfo = findViewById(R.id.showstudentinfo)
