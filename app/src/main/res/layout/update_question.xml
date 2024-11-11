@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/updateQuestion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="37dp"
+
+
+        android:background="@drawable/semitransparent_rounded_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="1"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493"
+        app:layout_constraintWidth_percent="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/type_question_body"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="214dp"
+
+            android:layout_marginBottom="223dp"
+            android:background="@drawable/rounder_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/typetextguid"
+                android:layout_width="267dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+
+                android:layout_marginTop="24dp"
+                android:paddingStart="3dp"
+                android:text="Update Student Information"
+                android:textColor="@color/blue"
+                android:textSize="28sp"
+                app:layout_constraintHeight_percent=".22"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".8" />
+
+            <Button
+                android:id="@+id/closeButtonQuestion"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/redButton"
+                android:text="No"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".16"
+                app:layout_constraintHorizontal_bias="0.596"
+                app:layout_constraintStart_toEndOf="@+id/yesButton"
+                app:layout_constraintTop_toBottomOf="@+id/g2"
+                app:layout_constraintWidth_percent=".45" />
+
+            <Button
+                android:id="@+id/yesButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/blueButton"
+                android:text="Update"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintHeight_percent=".16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/g2"
+                app:layout_constraintWidth_percent=".45" />
+
+            <TextView
+                android:id="@+id/g2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+
+
+                android:text="Are you sure you want to update the student information? This action cannot be undone."
+                android:textColor="@color/black_text"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".38"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/typetextguid"
+                app:layout_constraintWidth_percent="1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- White background -->
+    <solid android:color="@android:color/white" />
+
+    <!-- Rounded corners -->
+    <corners android:radius="16dp" />
+
+    <!-- Transparent stroke (no border) for top, start, and end -->
+    <stroke android:width="0dp" android:color="@android:color/transparent" />
+
+    <!-- Add bottom border with blue color -->
+    <stroke android:width="2dp" android:color="@color/blue" />
+
+    <!-- Specify only bottom left and bottom right radius to ensure only bottom has the effect -->
+    <corners android:topLeftRadius="0dp"
+        android:topRightRadius="0dp"
+        android:bottomLeftRadius="16dp"
+        android:bottomRightRadius="16dp" />
+</shape>
+

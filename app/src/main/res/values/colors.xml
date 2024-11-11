@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#EF6F6565</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="whitespan">#DAFFFFFF</color>
+    <color name="purple">#9868D3</color>
+    <color name="grey">#B7C5C2C2</color>
+    <color name="blue">#EF141313</color>
+
+    <color name="swimblue">#444C4D</color>
+    <color name="swimblue2">#2A2C2A</color>
+    <color name="swimblue3">#1F2421</color>
+    <color name="blueButton">#F12F89E9</color>
+    <color name="redButton">#E6E00B46</color>
+    <color name="rowColor">#FFFFFF</color>
+    <color name="semi_white">#F5E2E6E6</color>
+    <color name="semi_white2">#E2E6E6</color>
+    <color name="semi_transparent">#59434744</color>
+    <color name="black_text">#D5141414</color>
+    <color name="white_text">#ABF2F1F1</color>
+    <color name="home_tab_color">#E5366CC8</color>
+    <color name="grad_tab_color">#E57A36C8</color>
+    <color name="drop_tab_color">#F136C840</color>
+    <color name="trans_tab_color">#F1C89036</color>
+    <color name="stud_tab_color">#F1C83636</color>
+    <color name="prof_tab_color">#F1C8BC36</color>
+
+
+
+
+
+
+
+
+</resources>

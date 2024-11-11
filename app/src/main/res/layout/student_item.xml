@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+    android:padding="0dp"
+    android:background="@drawable/border_bottom">
+
+    <TextView
+        android:id="@+id/studentNumber"
+        android:layout_width="0dp"
+        android:text="22-0565"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/studentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Estares, Alexander A"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/studentEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="alexander.estares77@gmail.com"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/studentStatus"
+        android:layout_width="0dp"
+        android:text="Enrrolled"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+</LinearLayout>
+

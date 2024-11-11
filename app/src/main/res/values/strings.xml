@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Olayon Pogi</string>
+    <string name="textView">Sign in</string>
+    <string name="username">Username</string>
+    <string name="usernameHint">Enter your Username</string>
+    <string name="password">Password</string>
+    <string name="passwordHint">Enter your Password</string>
+    <string name="submit">Submit</string>
+    <string name="userId">User ID</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="middleName">Middle Name</string>
+    <string name="underlined_text"><u>Student Information</u></string>
+
+</resources>
