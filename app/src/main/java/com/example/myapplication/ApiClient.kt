@@ -219,7 +219,47 @@ object ApiClient {
     }
 
 
-    fun getProfessorAttendance(professorId: String?, callback: (List<AdminViewStudentAttendanceData>?) -> Unit) {
+    fun getProfessorStudentData(professorId: String, callback: (List<AdminViewProfessorStudentData>?) -> Unit) {
+        val url = "$BASE_URL/profstudent.php?professor_id=$professorId"
+
+        val request = Request.Builder()
+            .url(url)
+            .get()
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("ApiClient", "Network error: ${e.message}")
+                callback(null)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    if (!response.isSuccessful) {
+                        Log.d("ApiClient", "Response failed: ${response.message}")
+                        callback(null)
+                        return
+                    }
+
+                    val responseBody = response.body?.string()
+                    Log.d("ApiClient", "Response body: $responseBody")
+
+                    val professorStudentResponse = try {
+                        // Parse the JSON into AdminViewProfessorStudentResponse
+                        gson.fromJson(responseBody, AdminViewProfessorStudentResponse::class.java)
+                    } catch (e: JsonSyntaxException) {
+                        Log.e("ApiClient", "Failed to parse response: ${e.message}")
+                        null
+                    }
+
+                    callback(professorStudentResponse?.data)
+                }
+            }
+        })
+    }
+
+
+    fun getProfessorAttendance(professorId: String?, callback: (List<AdminViewProfessorStudentAttendanceData>?) -> Unit) {
         val url = "$BASE_URL/profselectstudentattendance.php?professor_id=$professorId"
 
         val request = Request.Builder()
@@ -246,7 +286,7 @@ object ApiClient {
 
                     val attendanceResponse = try {
                         // Parse the JSON into AdminViewStudentAttendanceResponse (adjust to your response structure)
-                        gson.fromJson(responseBody, AdminViewStudentAttendanceResponse::class.java)
+                        gson.fromJson(responseBody, AdminViewProfesorStudentAttendanceResponse::class.java)
                     } catch (e: JsonSyntaxException) {
                         Log.e("ApiClient", "Failed to parse response: ${e.message}")
                         null
