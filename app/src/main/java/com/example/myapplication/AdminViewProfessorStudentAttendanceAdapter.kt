@@ -40,7 +40,7 @@ class AdminViewProfessorStudentAttendanceAdapter(
         holder.timeIn.text = attendanceData.time_in
         holder.timeOut.text = attendanceData.time_out ?: "N/A"
         holder.status.text = attendanceData.status
-        holder.section.text = attendanceData.section
+        holder.section.text = attendanceData.program_code
 
         holder.itemView.setOnClickListener {
             onItemClick(attendanceData)

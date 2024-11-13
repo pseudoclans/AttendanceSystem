@@ -242,7 +242,7 @@
                 android:id="@+id/c_time_in_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time In"
+                android:text="Time Start"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/c_time_in"
                 app:layout_constraintStart_toStartOf="@+id/c_time_in" />
@@ -251,7 +251,7 @@
                 android:id="@+id/c_time_out_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time Out"
+                android:text="Time End"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/c_time_out"
                 app:layout_constraintStart_toEndOf="@+id/c_time_in" />

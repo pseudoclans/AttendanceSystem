@@ -132,13 +132,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
-            layout="@layout/student_user_information"
-            />
-        <include
             layout="@layout/adminviewstudattendance_details"
             app:layout_constraintHeight_percent="1"
             app:layout_constraintWidth_percent="1"
             tools:layout_editor_absoluteX="38dp"
             tools:layout_editor_absoluteY="16dp" />
+
+        <include
+            layout="@layout/student_user_information"
+            android:layout_marginEnd="409dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

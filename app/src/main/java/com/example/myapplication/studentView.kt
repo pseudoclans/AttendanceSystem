@@ -58,6 +58,7 @@ class studentView : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.studentview) // Ensure this matches your XML file name
+        findViewById<Button>(R.id.close_btn_info).visibility = View.GONE
 
         attendancedetailInfo = findViewById(R.id.detailsA)
 
@@ -66,6 +67,8 @@ class studentView : AppCompatActivity() {
             onItemClick = { attendanceData ->
                 displayAttendanceDetails(attendanceData) // Handle the item click
             }
+
+
         )
 
 
